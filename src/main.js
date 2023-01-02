@@ -5,12 +5,22 @@ import App from "./App.vue";
 import router from "./router";
 import { store } from "./stores";
 
-import "./assets/main.css";
+import "./assets/main.scss";
 // Vuetify
 import "vuetify/styles";
 import { createVuetify } from "vuetify";
 import * as components from "vuetify/components";
 import * as directives from "vuetify/directives";
+/* import the fontawesome core */
+import { library } from "@fortawesome/fontawesome-svg-core";
+
+/* import font awesome icon component */
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+
+/* import specific icons */
+import { fas  } from "@fortawesome/free-solid-svg-icons";
+/* add icons to the library */
+library.add(fas);
 
 const vuetify = createVuetify({
   components,
@@ -25,7 +35,7 @@ const vuetify = createVuetify({
 })
   .use(createPinia())
   .$mount("#app");*/
-const app = createApp(App);
+const app = createApp(App).component("font-awesome-icon", FontAwesomeIcon);
 
 app.use(createPinia());
 app.use(router);
