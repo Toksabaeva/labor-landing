@@ -11,6 +11,9 @@ import "vuetify/styles";
 import { createVuetify } from "vuetify";
 import * as components from "vuetify/components";
 import * as directives from "vuetify/directives";
+import ElementPlus from "element-plus";
+import "element-plus/dist/index.css";
+
 import { aliases, fa } from "vuetify/iconsets/fa-svg";
 /* import the fontawesome core */
 import { library } from "@fortawesome/fontawesome-svg-core";
@@ -46,6 +49,7 @@ const vuetify = createVuetify({
 const app = createApp(App).component("font-awesome-icon", FontAwesomeIcon);
 
 app.use(createPinia());
+app.use(ElementPlus);
 app.use(router);
 app.use(vuetify);
 app.use(store);

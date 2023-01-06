@@ -15,6 +15,7 @@ export default {
   name: "LayoutBlock",
   components: {
     AppMain,
+    Sidebar,
   },
   methods: {
     handleClickOutside() {
