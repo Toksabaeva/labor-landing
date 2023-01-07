@@ -1,19 +1,15 @@
 <template>
   <div :class="{ 'has-logo': showLogo }">
-    <el-radio-group v-model="isCollapse" style="margin-bottom: 20px">
-      <el-radio-button :label="false">expand</el-radio-button>
-      <el-radio-button :label="true">collapse</el-radio-button>
-    </el-radio-group>
     <el-scrollbar wrap-class="scrollbar-wrapper">
       <el-menu
         default-active="2"
-        class="el-menu-vertical-demo"
+        class=""
         active-text-color="#ffd04b"
-        background-color="#545c64"
+        background-color="#304156"
         text-color="#fff"
         :collapse="isCollapse"
       >
-        <el-sub-menu index="1">
+        <el-sub-menu index="1" popper-append-to-body>
           <template #title>
             <el-icon><location /></el-icon>
             <span>Navigator One</span>
@@ -55,6 +51,7 @@ import {
   Location,
   Setting,
 } from "@element-plus/icons-vue";
+import { mapGetters } from "vuex";
 
 export default {
   components: {
@@ -65,10 +62,11 @@ export default {
   },
   data() {
     return {
-      isCollapse: true,
+      // isCollapse: false,
     };
   },
   computed: {
+    ...mapGetters(["sidebar"]),
     activeMenu() {
       const route = this.$route;
       const { meta, path } = route;
@@ -81,6 +79,9 @@ export default {
     showLogo() {
       //return this.$store.state.settings.sidebarLogo;
       return false;
+    },
+    isCollapse() {
+      return !this.sidebar.opened;
     },
   },
 };
